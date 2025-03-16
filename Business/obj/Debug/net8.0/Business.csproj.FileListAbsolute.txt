@@ -1,0 +1,36 @@
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\Business.deps.json
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\Business.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\DAL.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\Shared.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\DAL.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\bin\Debug\net8.0\Shared.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.csproj.AssemblyReference.cache
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.AssemblyInfoInputs.cache
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.AssemblyInfo.cs
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.csproj.CoreCompileInputs.cache
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.sourcelink.json
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.csproj.Up2Date
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\refint\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\Business.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# .NET\Assignments\repozitori\Assignments\Project\Ketevan-Nanuashvili\Business\obj\Debug\net8.0\ref\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\Business.deps.json
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\Business.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\DAL.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\Shared.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\DAL.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\bin\Debug\net8.0\Shared.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.csproj.AssemblyReference.cache
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.AssemblyInfoInputs.cache
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.AssemblyInfo.cs
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.csproj.CoreCompileInputs.cache
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.sourcelink.json
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.csproj.Up2Date
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\refint\Business.dll
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\Business.pdb
+C:\Users\Keti\OneDrive\Desktop\programing\C# -ჩემი დავალებები\PhysicalPerson\Business\obj\Debug\net8.0\ref\Business.dll

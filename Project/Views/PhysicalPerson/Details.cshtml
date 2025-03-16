@@ -1,0 +1,123 @@
+﻿@model PhysicalPerson
+@using Project.Models
+
+<div class="container mt-5">
+    <h3>Person Details for ID: @Model.PersonalId</h3>
+
+    <div class="card mb-4 shadow-lg border-light p-3" style="margin-top: 15px; padding-bottom:15px;">
+        <div class="row g-0">
+
+
+            <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                <img src="~/@Model.ImagePath" alt="Person Image" class="img-fluid rounded" style="max-width: 100%; height: auto;">
+            </div>
+
+
+            <div class="col-md-8">
+                <div class="card-body">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close" onclick="window.location.href='/PhysicalPerson/Details';"></button>
+                    <h5 class="card-title text-muted mb-3">Personal Information about User Id:   <span class="fw-bold " style="color:#F93B1D;">@Model.Id</span></h5>
+                
+                    <div style="margin-top: 50px;" class="d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">First Name:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">@Model.FirstName</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Last Name:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">@Model.LastName</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Birth Date:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">@Model.BirthDate.ToString("yyyy-MM-dd")</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Gender:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">@Model.Gender</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">City:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">@(Model.City != null ? Model.City.Name : "No city information available")</span>
+                    </div>
+
+                    <!-- Phone Numbers -->
+                    <div class="d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Phone Numbers:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">
+                            @if (Model.PhoneNumbers != null && Model.PhoneNumbers.Any())
+                            {
+                                @foreach (var phone in Model.PhoneNumbers)
+                                {
+                                    <span>@phone.Type: @phone.Number</span>
+
+                                    <br />
+                                }
+                            }
+                            else
+                            {
+                                <span>No phone numbers available.</span>
+                            }
+                        </span>
+                    </div>
+
+                    <!-- Related To -->
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold text-muted">Related To:</span>
+                        <span class="fw-bold " style="color:#F93B1D;">
+                            @if (Model.RelatedTo != null && Model.RelatedTo.Any())
+                            {
+                                @foreach (var relation in Model.RelatedTo)
+                                {
+                                    @if (relation.RelatedTo != null)
+                                    {
+                                        <span>@relation.RelatedTo.FirstName @relation.RelatedTo.LastName - @relation.RelationType</span>
+
+                                        <br />
+                                    }
+                                    else
+                                    {
+                                        <span>Related person not found</span>
+
+                                        <br />
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <span>No related persons found.</span>
+                            }
+                        </span>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; margin-top:50px;">
+                        <div>
+                            <a href="@Url.Action("Edit", "PhysicalPerson", new { id = Model.Id })">
+                                <button class="btn" type="button" style="background-color: white; width:200px; color: #F93B1D; border-radius: 10px; padding: 12px 20px; font-weight: 600; text-transform: uppercase; border:1px gray solid; margin-left:300px;">Edit</button>
+                            </a>
+
+                        </div>
+                        <div>
+                            <a href="@Url.Action("Delete", "PhysicalPerson", new { id = Model.Id })">
+                                <button class="btn" style="background-color: #F93B1D;width:200px; color: white; border-radius: 10px; padding: 12px 20px; font-weight: 600; text-transform: uppercase;">
+                                    Delete
+                                </button>
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

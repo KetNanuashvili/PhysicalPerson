@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Project.Models.PhysicalPerson>
+
+<div class="container mt-5">
+
+    <div>
+ 
+        <div>
+            <a href="@Url.Action("Add", "PhysicalPerson")" class="btn" style="background-color: #F93B1D; color: white; border-radius: 10px; padding: 12px 20px; font-weight: 600; text-transform: uppercase;">
+                Create New Physical Person
+            </a>
+        </div>
+
+    </div>
+
+    <h3 class="text-center mb-4 " style="color:#F93B1D">All Persons</h3>
+
+    <div class="row">
+        @foreach (var person in Model)
+        {
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-lg border-0" style="border-radius: 15px; background-color: #f4f7f6;">
+                    <div class="card-body p-4 d-flex align-items-center justify-content-between" style="flex-wrap: nowrap;">
+
+                        <!-- ID -->
+                        <div class=" mb-3">
+                            <span class="font-weight-bold text-muted">ID:</span>
+                            <span class="text-dark">@person.Id</span>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="col-md-2 mb-3">
+                            <span class="font-weight-bold text-muted">Name:</span>
+                            <span  style="font-size: 1.1rem; color:#F93B1D;">@person.FirstName @person.LastName</span>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="col-md-2 mb-3">
+                            <span class="font-weight-bold text-muted">Gender:</span>
+                            <span class="text-dark">@person.Gender</span>
+                        </div>
+
+                        <!-- Phone Numbers -->
+                        <div class="col-md-2 mb-3">
+                            <span class="font-weight-bold text-muted">Phone Numbers:</span>
+                            @if (person.PhoneNumbers != null && person.PhoneNumbers.Any())
+                            {
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    @foreach (var phone in person.PhoneNumbers)
+                                    {
+                                        <li class="text-dark"><strong>@phone.Type:</strong> @phone.Number</li>
+                                    }
+                                </ul>
+                            }
+                          
+                        </div>
+
+                        <!-- City -->
+                        <div class="col-md-2 mb-3">
+                            <span class="font-weight-bold text-muted">City:</span>
+                            @if (person.City != null)
+                            {
+                                <span class="text-dark">@person.City.Name</span>
+                            }
+                          
+                        </div>
+
+                        <!-- View Person Button -->
+                        <div class="col-md-2 mb-3">
+                            <a href="@Url.Action("Details", "PhysicalPerson", new { id = person.Id })" class="btn" style="background-color: #F93B1D; color: white; border-radius: 10px; padding: 12px 20px; font-weight: 600; text-transform: uppercase;">
+                                View Person
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,61 @@
+﻿<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header d-flex justify-content-between align-items-center py-4">
+            <h4 class="mb-0" style="color:#F93B1D;">Add Relation</h4>
+            <button type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/PhysicalPerson/Details';"></button>
+        </div>
+        <div class="card-body">
+            <form asp-controller="PhysicalPerson" asp-action="AddRelation" method="post" onsubmit="return showRelationSuccessMessage()">
+                <div class="form-group">
+                    <label for="fromId" class="fw-bold text-muted">From Person ID <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control custom-input" name="fromId" id="fromId" required>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="toId" class="fw-bold text-muted">To Person ID <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control custom-input" name="toId" id="toId" required>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="relationType" class="fw-bold text-muted">Relation Type <span class="text-danger">*</span></label>
+                    <select class="form-control custom-input" name="relationType" id="relationType" required>
+                        <option value="Colleague">Colleague</option>
+                        <option value="Friend">Friend</option>
+                        <option value="Relative">Relative</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="text-center mt-4" style="display:flex; justify-content:right;">
+                    <button type="submit" class="btn btn-lg" style="background-color: #F93B1D; color: white;">Add Relation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-input {
+        height: 50px;
+        font-size: 16px;
+    }
+
+        .custom-input:focus {
+            border-color: #F93B1D !important;
+            box-shadow: 0 0 5px rgba(249, 59, 29, 0.5);
+        }
+
+    .card-header {
+        background-color: transparent !important;
+        border-bottom: none;
+    }
+
+    .btn-close {
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+
+</script>

@@ -1,0 +1,134 @@
+﻿@model Shared.commands.UpdatePersonCommandDto
+@using (Html.BeginForm("Edit", "PhysicalPerson", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header d-flex justify-content-between align-items-center py-4">
+                <h4 class="mb-0" style="color:#F93B1D;">Update Person</h4>
+                <button type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/PhysicalPerson/Details';"></button>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" asp-controller="PhysicalPerson" method="post" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="FirstName" class="fw-bold text-muted">First Name  <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control custom-input" id="FirstName" name="FirstName" asp-for="FirstName" pattern="^[ა-ჰa-zA-Z]+$" placeholder="Enter first name" required>
+                            <div class="invalid-feedback">First name must contain only Georgian or Latin letters.</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="LastName" class="fw-bold text-muted">Last Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control custom-input" id="LastName" name="LastName" asp-for="LastName" pattern="^[ა-ჰa-zA-Z]+$" placeholder="Enter last name" required>
+                            <div class="invalid-feedback">Last name must contain only Georgian or Latin letters.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="form-group col-md-6">
+                            <label for="PersonalId" class="fw-bold text-muted">Personal ID <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control custom-input" id="PersonalId" name="PersonalId" asp-for="PersonalId" pattern="^\d{11}$" placeholder="Enter personal ID" required>
+                            <div class="invalid-feedback">Personal ID must be exactly 11 digits.</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="BirthDate" class="fw-bold text-muted">Date Of Birth <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control custom-input" id="BirthDate" name="BirthDate" asp-for="BirthDate" required>
+                            <div class="invalid-feedback">You must be at least 18 years old.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="form-group col-md-6">
+                            <label for="CityName" class="fw-bold text-muted">City</label>
+                            <input type="text" class="form-control custom-input" id="CityName" name="City.Name" asp-for="City.Name" placeholder="Enter city">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="PhoneNumbers" class="fw-bold text-muted">Phone Number</label>
+                            @for (int i = 0; i < Model.PhoneNumbers.Count && i < 2; i++)
+                            {
+                                <input type="text" class="form-control custom-input mt-2" name="PhoneNumbers[@i].Number" value="@Model.PhoneNumbers[i].Number" placeholder="Enter phone number">
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="form-group col-md-6">
+                            <label for="Gender" class="fw-bold text-muted">Gender</label>
+                            <select class="form-control custom-input" id="Gender" name="Gender" asp-for="Gender">
+                                <option value="" selected disabled>Choose gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                             
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ImagePath" class="fw-bold text-muted">Image Path</label>
+                            <input type="text" class="form-control custom-input" id="ImagePath" name="ImagePath" asp-for="ImagePath" placeholder="Enter image path">
+                        </div>
+                    </div>
+
+
+                    <!-- Related Persons Section -->
+                    @for (int i = 0; i < Model.RelatedPersons.Count; i++)
+                    {
+                        <div class="row align-items-center mt-3">
+                            <div class="form-group col-md-4">
+                                <label class="fw-bold text-muted">First Name</label>
+                                <input type="text" class="form-control custom-input" placeholder="First Name"
+                                       name="RelatedPersons[@i].FirstName" value="@Model.RelatedPersons[i].FirstName" readonly />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label class="fw-bold text-muted">Last Name</label>
+                                <input type="text" class="form-control custom-input" placeholder="Last Name"
+                                       name="RelatedPersons[@i].LastName" value="@Model.RelatedPersons[i].LastName" readonly />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="RelationType" class="fw-bold text-muted">Relation Type</label>
+                                <select class="form-control custom-input" name="RelatedPersons[@i].Relationship">
+                                    <option value="@Model.RelatedPersons[i].Relationship">@Model.RelatedPersons[i].Relationship</option>
+                                    <option value="Colleague">Colleague</option>
+                                    <option value="Friend">Friend</option>
+                                    <option value="Relative">Relative</option>
+                                    <option value="Other">Other</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <hr />
+                    }
+
+
+                    <div class="text-center mt-4" style="margin-top:20px; display:flex; justify-content:right;">
+                        <button type="submit" class="btn btn-lg" style="background-color: #F93B1D; color: white;">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .custom-input {
+        height: 50px;
+        font-size: 16px;
+    }
+
+        .custom-input:focus {
+            border-color: #F93B1D !important;
+            box-shadow: 0 0 5px rgba(249, 59, 29, 0.5);
+        }
+
+    .card-header {
+        background-color: transparent !important;
+        border-bottom: none;
+    }
+
+    .btn-close {
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+</style>
+

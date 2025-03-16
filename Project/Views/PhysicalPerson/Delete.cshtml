@@ -1,0 +1,55 @@
+﻿<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header d-flex justify-content-between align-items-center py-4">
+            <h4 class="mb-0" style="color:#F93B1D;">Do you really want to delete this person?</h4>
+            <button type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/PhysicalPerson/Details';"></button>
+        </div>
+        <div class="card-body">
+            <!-- Display the Person ID dynamically -->
+            <p><strong>Person ID:</strong> <span id="personIdDisplay"></span></p>
+
+            <!-- Use the URL as part of the delete request -->
+            <button type="button" class="btn btn-danger" onclick="deletePerson()">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to get the personId from the URL query string
+    function getPersonIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id'); // Retrieves the 'id' query parameter from the URL
+    }
+
+    async function deletePerson() {
+        const personId = getPersonIdFromUrl();
+
+        if (!personId) {
+            alert("Person ID not found!");
+            return;
+        }
+
+        try {
+            const response = await fetch(`/PhysicalPerson/Delete/${personId}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                alert("Person was deleted successfully");
+                window.location.href = '/PhysicalPerson/Details';
+            } else {
+                const errorMessage = await response.text();
+                alert("Error deleting person: " + errorMessage);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error deleting person: " + error.message);
+        }
+    }
+
+    // Display the Person ID in the page
+    const personId = getPersonIdFromUrl();
+    if (personId) {
+        document.getElementById("personIdDisplay").textContent = personId;
+    }
+</script>

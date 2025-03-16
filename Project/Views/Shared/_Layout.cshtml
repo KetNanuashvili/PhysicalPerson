@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Physical Person</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/test.styles.css" asp-append-version="true" />
+</head>
+    
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                   
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <div><h1 style="color:#F93B1D; margin-left: 50px;">Physical Person</h1></div>
+                    <ul class="navbar-nav flex-grow-1" style="justify-content: right;">
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-item nav-color" asp-controller="PhysicalPerson" asp-action="AllDetails">
+                                Main Page
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-item" asp-area="" asp-controller="PhysicalPerson" asp-action="AddImg">
+                                Upload Picture
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-item" asp-area="" asp-controller="PhysicalPerson" asp-action="AddRelation">
+                                Upload Relation Person
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-item" asp-area="" asp-controller="PhysicalPerson" asp-action="Filter">
+                                Filter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container flex-grow-1">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5" style="background-color: #ffffff; box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); height: 240px; flex-shrink: 0;">
+        <div class="container">
+            <div class="row py-4">
+                <!-- About Section -->
+                <div class="col-md-4 mb-3">
+                    <h5 style="color: #F93B1D; font-weight: 600; text-transform: uppercase;">About Us</h5>
+                    <p style="color: #6c757d; font-size: 0.9rem;">
+                        Test Company is dedicated to providing quality services in various industries. We strive to deliver the best experience to our clients.
+                    </p>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="col-md-4 mb-3">
+                    <h5 style="color: #F93B1D; font-weight: 600; text-transform: uppercase;">Contact</h5>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="color: #6c757d; font-size: 0.9rem;">Phone: +123 456 789</li>
+                        <li style="color: #6c757d; font-size: 0.9rem;">Email: info@testcompany.com</li>
+                        <li style="color: #6c757d; font-size: 0.9rem;">Address: 1234 Main St, City, Country</li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-4 mb-3">
+                    <h5 style="color: #F93B1D; font-weight: 600; text-transform: uppercase;">Quick Links</h5>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li><a href="@Url.Action("AllDetails","PhysicalPerson")" style="color: #F93B1D; text-decoration: none;">Main Page</a></li>
+                        <li><a href="@Url.Action("AddImg", "PhysicalPerson")" style="color: #F93B1D; text-decoration: none;">Add Img Page</a></li>
+                        <li><a href="@Url.Action( "AddRelation","PhysicalPerson")" style="color: #F93B1D; text-decoration: none;">Relation Page</a></li>
+                        <li><a href="@Url.Action( "Filter", "PhysicalPerson")" style="color: #F93B1D; text-decoration: none;">Filter Page</a></li>
+                    </ul>
+                </div>
+            </div>
+           
+            <div class="text-center py-3">
+                <p style="font-size: 0.9rem; color: #6c757d;">
+                    &copy; 2025 - Test Company | All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+
+
+<style>
+    
+    .navbar-nav {
+        display: flex;
+        gap: 20px; 
+    }
+
+    .custom-nav-item {
+        background-color: #F93B1D;
+        color: #FFFFFF;
+        border-radius: 10px;
+        padding: 12px 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none; 
+        width: 230px; 
+        text-align: center; 
+    }
+
+        /* Hover ეფექტი */
+        .custom-nav-item:hover {
+            background-color: #F9B31D;
+            color: #FFFFFF;
+        }
+
+    /* btn სტილი */
+    .custom-btn {
+        background-color: #F93B1D;
+        color: #FFFFFF;
+        border-radius: 10px;
+        padding: 12px 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none; 
+        display: block;
+        width: 100%; 
+    }
+
+        .custom-btn:hover {
+            background-color: #F9B31D;
+            color: #FFFFFF;
+        }
+    /* Ensure the body takes the full height of the viewport */
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    /* Make the body a flex container, column layout */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    /* The main content area should grow to take available space */
+    main {
+        flex-grow: 1;
+    }
+
+    /* Footer styling */
+    footer {
+        background-color: #ffffff;
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+   
+</style>

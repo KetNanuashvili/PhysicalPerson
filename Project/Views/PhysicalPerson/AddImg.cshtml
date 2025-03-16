@@ -1,0 +1,120 @@
+﻿<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header d-flex justify-content-between align-items-center py-4">
+            <h4 class="mb-0" style="color:#F93B1D;">Upload Profile Picture</h4>
+            <button type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/PhysicalPerson/Details';"></button>
+        </div>
+        <div class="card-body">
+            <form asp-controller="PhysicalPerson" asp-action="AddProfilePicture" method="post" enctype="multipart/form-data" onsubmit="return showSuccessMessage()">
+                <!-- აიდის შეყვანა -->
+                <div class="form-group">
+                    <label for="personId" class="fw-bold text-muted">Person ID <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control custom-input" name="personId" id="personId" required>
+                    <div class="invalid-feedback">Person ID is required.</div>
+                </div>
+
+                <!-- სურათის ატვირთვა -->
+                <div class="form-group mt-3">
+                    <label for="image" class="fw-bold text-muted">Choose a profile picture <span class="text-danger">*</span></label>
+                    <input type="file" class="custom-file-input" name="image" id="image" required onchange="updateButtonText()">
+                    <label for="image" class="custom-file-label" id="imageLabel">Click to choose file</label>
+                    <div class="invalid-feedback">Please select an image.</div>
+                </div>
+
+                <!-- Submit button -->
+                <div class="text-center mt-4" style="display:flex; justify-content:right;">
+                    <button type="submit" class="btn btn-lg" style="background-color: #F93B1D; color: white;">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-input {
+        height: 50px;
+        font-size: 16px;
+    }
+
+        .custom-input:focus {
+            border-color: #F93B1D !important;
+            box-shadow: 0 0 5px rgba(249, 59, 29, 0.5);
+        }
+
+    .card-header {
+        background-color: transparent !important;
+        border-bottom: none;
+    }
+
+    .btn-close {
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .custom-file-input {
+        display: none;
+    }
+
+    .custom-file-label {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #fff;
+        border: 2px dotted #F93B1D;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: #F93B1D;
+        cursor: pointer;
+    }
+
+        .custom-file-label:hover {
+            background-color: #F93B1D;
+            color: white;
+        }
+
+    .invalid-feedback {
+        display: block;
+        color: #e53e3e;
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 5px;
+    }
+</style>
+
+<script>
+    function updateButtonText() {
+        var imageInput = document.getElementById('image');
+        var imageLabel = document.getElementById('imageLabel');
+        var submitButton = document.querySelector('button[type="submit"]');
+
+        if (imageInput.files && imageInput.files[0]) {
+            imageLabel.textContent = 'Picture uploaded successfully';
+            imageLabel.style.backgroundColor = '#28a745'; 
+            imageLabel.style.color = 'white';
+            submitButton.disabled = false; 
+        } else {
+            imageLabel.textContent = 'Click to choose file';
+            imageLabel.style.backgroundColor = '#fff';
+            imageLabel.style.color = '#F93B1D';
+            submitButton.disabled = true; 
+        }
+    }
+
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

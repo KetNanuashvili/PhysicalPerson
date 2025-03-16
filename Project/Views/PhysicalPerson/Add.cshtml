@@ -1,0 +1,203 @@
+﻿@model CreatePersonCommandDto
+@using Project.commands
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header d-flex justify-content-between align-items-center py-4">
+            <h4 class="mb-0" style="color:#F93B1D;">Add Person</h4>
+            <button type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/PhysicalPerson/Details';"></button>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" asp-controller="PhysicalPerson" method="post" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="Name" class="fw-bold text-muted">First Name  <span class="text-danger ">*</span></label>
+                        <input type="text" class="form-control custom-input" id="Name" name="Name" asp-for="Name" pattern="^[ა-ჰa-zA-Z]+$" placeholder="Enter first name" required>
+                        <div class="invalid-feedback">First name must contain only Georgian or Latin letters.</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="LastName" class="fw-bold text-muted">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control custom-input" id="LastName" name="LastName" asp-for="LastName" pattern="^[ა-ჰa-zA-Z]+$" placeholder="Enter last name" required>
+                        <div class="invalid-feedback">Last name must contain only Georgian or Latin letters.</div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-6">
+                        <label for="PersonalId" class="fw-bold text-muted">Personal ID <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control custom-input" id="PersonalId" name="PersonalId" asp-for="PersonalId" pattern="^\d{11}$" placeholder="Enter personal ID" required>
+                        <div class="invalid-feedback">Personal ID must be exactly 11 digits.</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="BirthDate" class="fw-bold text-muted">Date Of Birth <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control custom-input" id="BirthDate" name="BirthDate" asp-for="BirthDate" required>
+                        <div class="invalid-feedback">You must be at least 18 years old.</div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-6">
+                        <label for="City" class="fw-bold text-muted">City</label>
+                        <input type="text" class="form-control custom-input" id="City" name="City.Name" asp-for="City" placeholder="Enter city">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Gender" class="fw-bold text-muted">Gender</label>
+                        <select class="form-control custom-input" id="Gender" name="Gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <div class="invalid-feedback">Gender is required.</div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-6">
+                        <label for="PhoneNumbers" class="fw-bold text-muted">Phone Number</label>
+                        <div id="phoneNumbersSection">
+                            <div class="phone-number-container" id="phoneNumber_1">
+                                <div class="d-flex align-items-center">
+                                    <select class="form-control custom-input mr-2" id="PhoneNumberType_1" name="PhoneNumbers[0].Type">
+                                        <option value="Home">Home</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Mobile">Mobile</option>
+                                    </select>
+                                    <input type="text" class="form-control custom-input" id="PhoneNumber_1" name="PhoneNumbers[0].Number" placeholder="Enter phone number">
+                                </div>
+                                <button type="button" class="btn btn-danger btn-sm remove-phone" style="display:none;" onclick="removePhoneNumber(1)">Remove Number</button>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-success btn-sm mt-2" id="addPhoneNumberBtn" onclick="addPhoneNumber()">Add Another Phone Number</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4" style="margin-top:20px; display:flex; justify-content:right;">
+                    <button type="submit" class="btn btn-lg" id="submitBtn" style="background-color: #F93B1D; color: white;">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-input {
+        height: 50px;
+        font-size: 16px;
+    }
+
+        .custom-input:focus {
+            border-color: #F93B1D !important;
+            box-shadow: 0 0 5px rgba(249, 59, 29, 0.5);
+        }
+
+    .card-header {
+        background-color: transparent !important;
+        border-bottom: none;
+    }
+
+    .btn-close {
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .phone-number-container {
+        margin-bottom: 10px;
+    }
+
+    .remove-phone {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+    }
+
+    .btn-danger {
+        background-color: red;
+    }
+
+    .d-flex.justify-content-end {
+        justify-content: flex-end;
+    }
+</style>
+
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    let isValid = form.checkValidity(); // check entire form validation
+
+                    let birthDateInput = document.getElementById("BirthDate");
+                    if (birthDateInput) {
+                        let birthDate = new Date(birthDateInput.value);
+                        let today = new Date();
+                        let age = today.getFullYear() - birthDate.getFullYear();
+                        let monthDiff = today.getMonth() - birthDate.getMonth();
+
+                        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                            age--;
+                        }
+
+                        if (age < 18) {
+                            birthDateInput.setCustomValidity("You must be at least 18 years old.");
+                            isValid = false;
+                        } else {
+                            birthDateInput.setCustomValidity("");
+                            // Automatically change submit button color to green
+                            document.getElementById('submitBtn').style.backgroundColor = '#28a745'; // Green color
+                        }
+                    }
+
+                    form.classList.add('was-validated');
+
+                    if (!isValid) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                }, false);
+            });
+        }, false);
+    })();
+
+    let phoneNumberCount = 1;
+
+    function addPhoneNumber() {
+        phoneNumberCount++;
+        const phoneNumbersSection = document.getElementById("phoneNumbersSection");
+
+        const newPhoneNumber = document.createElement("div");
+        newPhoneNumber.classList.add("phone-number-container");
+        newPhoneNumber.id = "phoneNumber_" + phoneNumberCount;
+
+        newPhoneNumber.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <select class="form-control custom-input mr-2" id="PhoneNumberType_${phoneNumberCount}" name="PhoneNumbers[${phoneNumberCount - 1}].Type">
+                            <option value="Home">Home</option>
+                            <option value="Work">Work</option>
+                            <option value="Mobile">Mobile</option>
+                        </select>
+                        <input type="text" class="form-control custom-input" id="PhoneNumber_${phoneNumberCount}" name="PhoneNumbers[${phoneNumberCount - 1}].Number" placeholder="Enter phone number">
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-phone" onclick="removePhoneNumber(${phoneNumberCount})">Remove</button>
+                `;
+
+        phoneNumbersSection.appendChild(newPhoneNumber);
+        document.getElementById("addPhoneNumberBtn").style.display = "none";
+    }
+
+    function removePhoneNumber(number) {
+        const phoneNumberContainer = document.getElementById("phoneNumber_" + number);
+        phoneNumberContainer.remove();
+        phoneNumberCount--;
+        if (phoneNumberCount === 1) {
+            document.getElementById("addPhoneNumberBtn").style.display = "inline-block";
+        }
+    }
+</script>
